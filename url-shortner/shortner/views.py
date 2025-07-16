@@ -12,3 +12,11 @@ def create_short_url(request):
         short_url = serializer.save()
         return Response(ShortURLSerializer(short_url).data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET'])
+def retrieve_original_url(request, short_code):
+    short_url = get_object_or_404(ShortURL, shortCode=short_code)
+    short_url.accessCount += 1
+    short_url.save()
+    return Response(ShortURLSerializer(short_url).data) 

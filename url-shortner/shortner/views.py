@@ -44,3 +44,10 @@ def delete_short_url(request, short_code):
 def url_statistics(request, short_code):
     short_url = get_object_or_404(ShortURL, shortCode=short_code)
     return Response(ShortURLSerializer(short_url).data)
+
+
+@api_view(['GET'])
+def list_all_urls(request):
+    urls = ShortURL.objects.all().order_by('-createdAt')
+    serializer = ShortURLSerializer(urls, many=True)
+    return Response(serializer.data)

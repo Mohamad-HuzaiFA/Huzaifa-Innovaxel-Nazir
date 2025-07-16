@@ -38,3 +38,9 @@ def delete_short_url(request, short_code):
     short_url = get_object_or_404(ShortURL, shortCode=short_code)
     short_url.delete()
     return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+@api_view(['GET'])
+def url_statistics(request, short_code):
+    short_url = get_object_or_404(ShortURL, shortCode=short_code)
+    return Response(ShortURLSerializer(short_url).data)

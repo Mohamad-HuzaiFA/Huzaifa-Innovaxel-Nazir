@@ -87,17 +87,21 @@ Test via Postman or browser:
 http://127.0.0.1:8000/
 ```
 
-🔗 API Endpoints
+# API Endpoints
+
+```bash
 Method Endpoint Description
 POST /shorten Create a new short URL
-GET /shorten/<shortCode> Retrieve original URL (JSON response)
-PUT /shorten/<shortCode> Update the long/original URL
-DELETE /shorten/<shortCode> Delete the short URL
+GET /shorten/<shortCode> Retrieve and redirect to original URL
+PUT /shorten/<shortCode>/update Update the long/original URL
+DELETE /shorten/<shortCode>/delete Delete the short URL
 GET /shorten/<shortCode>/stats View access count
-GET /shorten/ View all shortened URLs
-GET /r/<shortCode> Redirect to original URL (optional)
+GET /shorten/all/ View all shortened URLs
+```
 
-📌 Notes
+# 📌 Notes
+
+```bash
 URL validation is enforced using DRF serializers.
 
 Short codes are unique and randomly generated.
@@ -107,19 +111,14 @@ Access count increases on every GET call.
 MySQL is used to simulate a real-world environment.
 
 Minimum 15 commits will be added for review.
+```
 
-👥 Reviewer Access
-The following GitHub user was added as reviewer:
+# 📧 Contact
 
-Junaid Hussnain
-
-The repo is public for easy access.
-
-📧 Contact
+```bash
 For any follow-up, feel free to reach out.
 
 Developer: Huzaifa Nazeer
 
-Email: [your-email@example.com]
-
-yaml
+Email: [huzaifa010.muhammad@gmail.com]
+```
